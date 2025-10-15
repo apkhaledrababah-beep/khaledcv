@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Khaled Rababah — Innovation CV (v4)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg1:#020317; --bg2:#05102a; --accent1:#00d0ff; --accent2:#a100ff; --muted:#98aebb; --card:#071428;
+  --glass: rgba(255,255,255,0.03);
+  --glow-c1: 0,208,255; /* cyan */
+  --glow-c2: 161,0,255; /* magenta */
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial;color:#e8f6ff;background:linear-gradient(180deg,var(--bg1),var(--bg2));-webkit-font-smoothing:antialiased}
+.container{max-width:1120px;margin:36px auto;padding:28px}
+.hero{position:relative;overflow:hidden;border-radius:16px;padding:28px;background:linear-gradient(135deg, rgba(10,20,35,0.6), rgba(4,10,20,0.35));box-shadow:0 20px 60px rgba(2,6,23,0.7);border:1px solid rgba(255,255,255,0.03)}
+.canvas-bg{position:absolute;inset:0;z-index:0;pointer-events:none}
+.header{position:relative;z-index:2;display:flex;gap:18px;align-items:center}
+.avatar{width:120px;height:120px;border-radius:16px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;color:#021; font-weight:900;font-size:36px;box-shadow:0 12px 40px rgba(161,0,255,0.12);transform:translateY(-6px);opacity:0;animation:enter 700ms forwards 200ms}
+@keyframes enter{to{transform:none;opacity:1}}
+.name{margin:0;opacity:0;transform:translateY(12px);animation:enter 700ms forwards 360ms}
+h1{margin:0;font-size:30px;letter-spacing:0.6px}
+.tag{color:var(--muted);margin-top:6px;font-size:14px;opacity:0;transform:translateY(12px);animation:enter 700ms forwards 520ms}
+.lead{margin-top:12px;color:#dff6ff;font-size:15px;max-width:760px;opacity:0;transform:translateY(12px);animation:enter 700ms forwards 680ms}
+.pills{margin-top:10px;opacity:0;transform:translateY(12px);animation:enter 700ms forwards 820ms}
+.pill{display:inline-block;padding:8px 12px;border-radius:999px;background:linear-gradient(90deg, rgba(0,208,255,0.06), rgba(161,0,255,0.04));color:var(--accent1);font-weight:700;font-size:13px;margin:6px 6px 6px 0;backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,0.02);transition:transform 200ms, box-shadow 200ms}
+.pill:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,208,255,0.06)}
+
+/* typing */
+.typewrap{display:inline-block;color:#bff6ff;font-weight:700;margin-left:6px}
+.cursor{display:inline-block;width:10px;background:var(--accent1);margin-left:6px;height:18px;vertical-align:middle;animation:blink 900ms steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* grid layout */
+.grid{display:grid;grid-template-columns:1fr 360px;gap:22px;margin-top:22px;position:relative;z-index:2}
+.card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;padding:18px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 10px 30px rgba(2,6,23,0.6)}
+.section-title{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.section-title h2{margin:0;color:var(--accent1);font-size:15px}
+.quote{background:linear-gradient(90deg, rgba(0,208,255,0.06), rgba(161,0,255,0.03));padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);font-weight:600;color:#dff6ff;margin-top:10px}
+
+/* timeline */
+.timeline{border-left:3px solid rgba(255,255,255,0.03);padding-left:14px;margin-top:6px}
+.timeline-item{margin-bottom:14px;opacity:0;transform:translateY(16px);transition:all 600ms cubic-bezier(.2,.9,.2,1)}
+.timeline-item.show{opacity:1;transform:none}
+.minor{color:var(--muted);font-size:13px}
+.list{margin:8px 0 12px 18px}
+
+/* skills - enhanced */
+.skills{display:flex;flex-direction:column;gap:12px;margin-top:8px}
+.skill{width:100%;display:flex;flex-direction:column;gap:8px;opacity:0;transform:translateY(12px);transition:all 520ms}
+.skill.show{opacity:1;transform:none}
+.skill-head{display:flex;justify-content:space-between;align-items:center;font-size:13px;margin-bottom:4px}
+.skillbar-wrap{display:flex;gap:12px;align-items:center}
+.skillbar{flex:1;background:rgba(255,255,255,0.03);height:14px;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.02);position:relative}
+.skillbar > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent1),var(--accent2));width:0;transition:width 1000ms cubic-bezier(.2,.9,.2,1);box-shadow:0 8px 24px rgba(0,208,255,0.08);transform-origin:left center;}
+.skillnum{min-width:52px;text-align:right;font-weight:800;font-size:14px;color:#fff;text-shadow:0 6px 18px rgba(var(--glow-c1),0.06);transition:filter 200ms, text-shadow 200ms}
+
+/* numeric glow animation */
+.glow{animation:glowPulse 1200ms ease-out both}
+@keyframes glowPulse{
+  0%{text-shadow:0 0 0 rgba(var(--glow-c1),0); color:#fff}
+  40%{text-shadow:0 6px 18px rgba(var(--glow-c1),0.45), 0 0 24px rgba(var(--glow-c2),0.22); color: #eaffff}
+  100%{text-shadow:0 8px 30px rgba(var(--glow-c1),0.28), 0 0 36px rgba(var(--glow-c2),0.18); color:#e8fbff}
+}
+
+/* hover brighter glow */
+.skillbar:hover > i{filter:brightness(1.08);box-shadow:0 14px 42px rgba(var(--glow-c2),0.12)}
+.skill:hover .skillnum{filter:drop-shadow(0 12px 36px rgba(var(--glow-c2),0.08));}
+
+/* impact cards */
+.impact{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
+.impact-card{flex:1 1 150px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.02);text-align:center;opacity:0;transform:translateY(12px);transition:all 520ms}
+.impact-card.show{opacity:1;transform:none}
+.impact-card strong{display:block;font-size:20px;color:#fff;margin-bottom:6px}
+.impact-card .label{color:var(--muted);font-size:13px}
+
+/* courses flip cards */
+.courses-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:10px}
+.course{perspective:1000px;cursor:pointer;opacity:0;transform:translateY(12px);transition:all 420ms}
+.course-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform 560ms}
+.course-front,.course-back{position:relative;border-radius:10px;padding:12px;min-height:68px;backface-visibility:hidden;border:1px solid rgba(255,255,255,0.02);display:flex;flex-direction:column;justify-content:center}
+.course-front{background:linear-gradient(90deg, rgba(0,208,255,0.03), transparent)}
+.course-back{position:absolute;inset:0;background:linear-gradient(90deg, rgba(161,0,255,0.03), transparent);transform:rotateY(180deg);}
+.course:hover .course-inner{transform:rotateY(180deg);box-shadow:0 18px 50px rgba(0,208,255,0.06)}
+
+/* right column */
+.right .card{position:sticky;top:28px}
+.contact-list{display:flex;flex-direction:column;gap:8px;font-size:14px}
+.contact a{color:#dff6ff;text-decoration:none;font-weight:700}
+.linkedin{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:10px;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#012;font-weight:800;text-decoration:none;transition:transform 200ms, box-shadow 200ms}
+.linkedin:hover{transform:translateY(-4px);box-shadow:0 14px 40px rgba(0,208,255,0.08)}
+
+/* verification badge */
+.verified{display:inline-flex;align-items:center;gap:6px;padding:6px 8px;border-radius:999px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);color:#bff6ff;font-weight:700}
+.verified .check{display:inline-block;width:18px;height:18px;border-radius:4px;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#012;font-weight:900;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(161,0,255,0.08)}
+
+/* sidebar skill pills animated */
+.sidebar-skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.sidebar-skills .pill{animation:pulse 3000ms ease-in-out infinite;opacity:0.95}
+@keyframes pulse{
+  0%{transform:translateY(0);opacity:0.95}
+  50%{transform:translateY(-4px);opacity:1}
+  100%{transform:translateY(0);opacity:0.95}
+}
+
+/* dropdown */
+.download{display:flex;gap:8px;margin-top:12px}
+.dropdown{position:relative}
+.dropbtn{background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#012;border:none;padding:10px 12px;border-radius:10px;font-weight:800;cursor:pointer;transition:transform 240ms}
+.dropbtn:hover{transform:translateY(-4px)}
+.dropmenu{position:absolute;right:0;top:56px;background:#031026;border-radius:10px;padding:8px;border:1px solid rgba(255,255,255,0.03);transform-origin:top right;transform:scale(0.92);opacity:0;transition:all 200ms;pointer-events:none}
+.dropdown.show .dropmenu{transform:scale(1);opacity:1;pointer-events:auto}
+.dropmenu a{display:block;padding:8px 10px;color:#dff6ff;text-decoration:none;border-radius:8px}
+
+/* footer */
+.footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
+
+/* responsive */
+@media (max-width:980px){.grid{grid-template-columns:1fr}.courses-grid{grid-template-columns:1fr}.avatar{width:96px;height:96px;font-size:32px}.right .card{position:relative}}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <canvas class="canvas-bg" id="particles"></canvas>
+    <div class="header">
+      <div class="avatar" id="avatar">KR</div>
+      <div style="flex:1">
+        <h1 class="name">Khaled Rababah</h1>
+        <div class="tag">Math Teacher <span class="typewrap" id="typer"></span><span class="cursor"></span></div>
+        <div class="lead">I create learner-centered mathematics experiences that combine rigorous pedagogy with educational technology, data-informed coaching, and creative problem solving. My projects scale classroom impact through automation, blended design and teacher capacity-building.</div>
+        <div class="pills">
+          <span class="pill">Math Education</span><span class="pill">AP Coordination</span><span class="pill">Lean Six Sigma</span><span class="pill">EdTech</span>
+        </div>
+      </div>
+      <div style="width:220px;text-align:right;color:var(--muted)">
+        <div class="verified" title="LinkedIn verified">
+          <div class="check">✔</div>
+          <div style="font-size:13px">Verified</div>
+        </div>
+        <div style="margin-top:10px" class="contact-list">
+          <div><a href="mailto:apkhaledrababah@gmail.com">apkhaledrababah@gmail.com</a></div>
+          <div><a href="tel:+971547397769">+971 54739 7769</a></div>
+          <div class="minor">Ras Al Khaimah, UAE</div>
+          <div style="margin-top:10px">
+            <a class="linkedin" href="https://www.linkedin.com/in/khaled-rababah-945162a2/" target="_blank" id="linkedinBtn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="filter:drop-shadow(0 6px 18px rgba(0,208,255,0.06))">
+                <path d="M4.98 3.5C4.98 4.88071 3.88071 6 2.49 6C1.09929 6 0 4.88071 0 3.5C0 2.11929 1.09929 1 2.49 1C3.88071 1 4.98 2.11929 4.98 3.5Z" fill="#012" opacity="0.9"/>
+                <rect x="0.5" y="7" width="4" height="15" rx="1" fill="#012" opacity="0.9"/>
+                <path d="M10 7H14V9.5C14.7 8.3 16.4 7 19 7V11H14.5" fill="#012" opacity="0.9"/>
+              </svg>
+              Khaled Rababah
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <main>
+        <div class="card">
+          <div class="section-title"><h2>Profile</h2></div>
+          <div class="quote">Creative mathematics educator who leverages instructional design, data analytics and technology to raise achievement and expand opportunities — practitioner of blended learning and teacher-led innovation.</div>
+
+          <div style="margin-top:14px" class="section-title"><h2>Impact Highlights</h2></div>
+          <div class="impact" id="impact">
+            <div class="impact-card"><strong>300+</strong><div class="label">Students coached</div></div>
+            <div class="impact-card"><strong>10+</strong><div class="label">Innovation projects</div></div>
+            <div class="impact-card"><strong>15</strong><div class="label">Certifications</div></div>
+            <div class="impact-card"><strong>8+</strong><div class="label">Years teaching</div></div>
+          </div>
+
+          <div style="margin-top:18px" class="section-title"><h2>Experience</h2></div>
+          <div class="timeline" id="timeline">
+            <div class="timeline-item" id="t1">
+              <h3>Mathematics Teacher — Applied Technology Schools (ATS), RAK, UAE</h3>
+              <div class="minor">2025 – Present</div>
+              <ul class="list">
+                <li>Taught Grade 9 & 11 mathematics: Algebra, Functions, and Exponential models.</li>
+                <li>Designed digital learning tools (Excel trackers, Class Notebook workflows, interactive platforms).</li>
+                <li>Coached students for national & international math competitions and ran problem-solving workshops.</li>
+              </ul>
+            </div>
+
+            <div class="timeline-item" id="t2">
+              <h3>Mathematics Teacher & AP Coordinator — Ministry of Education, UAE</h3>
+              <div class="minor">2019 – 2025</div>
+              <ul class="list">
+                <li>Delivered MOE-aligned secondary mathematics curriculum and assessments.</li>
+                <li>Served as AP Coordinator: program delivery, assessments, and readiness initiatives.</li>
+                <li>Implemented learning interventions and collaborative PD.</li>
+              </ul>
+            </div>
+
+            <div class="timeline-item" id="t3">
+              <h3>Mathematics Teacher — Jordan</h3>
+              <div class="minor">2016 – 2019</div>
+              <ul class="list">
+                <li>Taught secondary-level mathematics with focus on exam preparation and problem-solving strategies.</li>
+                <li>Individualized instruction to raise student achievement.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div style="margin-top:18px" class="section-title"><h2>Education & Certifications</h2></div>
+          <p class="minor">Bachelor’s degree in Mathematics — Balqa Applied University, Jordan, 2016</p>
+
+          <div style="margin-top:12px" class="section-title"><h2>Selected Courses (Coursera & Online)</h2></div>
+          <div class="courses-grid" id="courses">
+            <div class="course"><div class="course-inner"><div class="course-front"><div class="title">Instructional Design Foundations and Applications</div><div class="inst">University of Illinois Urbana-Champaign</div></div><div class="course-back"><div class="title">University of Illinois Urbana-Champaign</div><div class="inst">Instructional Design Foundations and Applications</div></div></div></div>
+            <div class="course"><div class="course-inner"><div class="course-front"><div class="title">أسس إدارة المشاريع</div><div class="inst">GOOGLE</div></div><div class="course-back"><div class="title">GOOGLE</div><div class="inst">أسس إدارة المشاريع</div></div></div></div>
+            <div class="course"><div class="course-inner"><div class="course-front"><div class="title">الذكاء الاصطناعي للجميع</div><div class="inst">DeepLearning.AI</div></div><div class="course-back"><div class="title">DeepLearning.AI</div><div class="inst">الذكاء الاصطناعي للجميع</div></div></div></div>
+            <div class="course"><div class="course-inner"><div class="course-front"><div class="title">Foundations for Active Learning in STEM Courses</div><div class="inst">Johns Hopkins University</div></div><div class="course-back"><div class="title">Johns Hopkins University</div><div class="inst">Foundations for Active Learning in STEM Courses</div></div></div></div>
+            <div class="course"><div class="course-inner"><div class="course-front"><div class="title">Apple Teacher</div><div class="inst">APPLE</div></div><div class="course-back"><div class="title">APPLE</div><div class="inst">Apple Teacher</div></div></div></div>
+            <div class="course"><div class="course-inner"><div class="course-front"><div class="title">High Performance Collaboration: Leadership, Teamwork, and Negotiation</div><div class="inst">Northwestern University</div></div><div class="course-back"><div class="title">Northwestern University</div><div class="inst">High Performance Collaboration</div></div></div></div>
+            <div class="course"><div class="course-inner"><div class="course-front"><div class="title">قيادة الفرق</div><div class="inst">University of Michigan</div></div><div class="course-back"><div class="title">University of Michigan</div><div class="inst">قيادة الفرق</div></div></div></div>
+            <div class="course"><div class="course-inner"><div class="course-front"><div class="title">بدء المشروع: بدء مشروع ناجح</div><div class="inst">GOOGLE</div></div><div class="course-back"><div class="title">GOOGLE</div><div class="inst">بدء المشروع: بدء مشروع ناجح</div></div></div></div>
+            <div class="course"><div class="course-inner"><div class="course-front"><div class="title">إدارة المشروعات في أجايل</div><div class="inst">GOOGLE</div></div><div class="course-back"><div class="title">GOOGLE</div><div class="inst">إدارة المشروعات في أجايل</div></div></div></div>
+            <div class="course"><div class="course-inner"><div class="course-front"><div class="title">كابستون: تطبيق إدارة المشروعات في العالم الحقيقي</div><div class="inst">GOOGLE</div></div><div class="course-back"><div class="title">GOOGLE</div><div class="inst">كابستون: تطبيق إدارة المشروعات</div></div></div></div>
+            <div class="course"><div class="course-inner"><div class="course-front"><div class="title">Six Sigma and the Organization (Advanced)</div><div class="inst">Kennesaw State University</div></div><div class="course-back"><div class="title">Kennesaw State University</div><div class="inst">Six Sigma and the Organization (Advanced)</div></div></div></div>
+            <div class="course"><div class="course-inner"><div class="course-front"><div class="title">التخطيط للمشروع: وضع كل شيء معًا</div><div class="inst">GOOGLE</div></div><div class="course-back"><div class="title">GOOGLE</div><div class="inst">التخطيط للمشروع</div></div></div></div>
+            <div class="course"><div class="course-inner"><div class="course-front"><div class="title">Creative Thinking and Innovation</div><div class="inst">The University of Sydney</div></div><div class="course-back"><div class="title">The University of Sydney</div><div class="inst">Creative Thinking and Innovation</div></div></div></div>
+            <div class="course"><div class="course-inner"><div class="course-front"><div class="title">Innovation Through Design: Think, Make, Break, Repeat</div><div class="inst">The University of Sydney</div></div><div class="course-back"><div class="title">The University of Sydney</div><div class="inst">Innovation Through Design</div></div></div></div>
+            <div class="course"><div class="course-inner"><div class="course-front"><div class="title">ChatGPT Advanced Data Analysis</div><div class="inst">Vanderbilt University</div></div><div class="course-back"><div class="title">Vanderbilt University</div><div class="inst">ChatGPT Advanced Data Analysis</div></div></div></div>
+          </div>
+
+          <div style="margin-top:18px" class="section-title"><h2>Approach</h2></div>
+          <p class="minor">I combine quantitative clarity with creative design — using small experiments, rapid prototyping, and data cycles to improve student mastery and teacher practice.</p>
+
+          <div style="margin-top:16px" class="section-title"><h2>Skills</h2></div>
+          <div class="skills" id="skills">
+            <div class="skill"><div class="skill-head"><div>Data & Trackers (Excel, Sheets)</div><div class="skillnum" data-target="92">0%</div></div><div class="skillbar-wrap"><div class="skillbar"><i style="width:0%" data-target="92"></i></div></div></div>
+            <div class="skill"><div class="skill-head"><div>Instructional Design</div><div class="skillnum" data-target="95">0%</div></div><div class="skillbar-wrap"><div class="skillbar"><i style="width:0%" data-target="95"></i></div></div></div>
+            <div class="skill"><div class="skill-head"><div>Classroom Coaching</div><div class="skillnum" data-target="90">0%</div></div><div class="skillbar-wrap"><div class="skillbar"><i style="width:0%" data-target="90"></i></div></div></div>
+            <div class="skill"><div class="skill-head"><div>Blended Learning Tools</div><div class="skillnum" data-target="93">0%</div></div><div class="skillbar-wrap"><div class="skillbar"><i style="width:0%" data-target="93"></i></div></div></div>
+            <div class="skill"><div class="skill-head"><div>Project Management</div><div class="skillnum" data-target="88">0%</div></div><div class="skillbar-wrap"><div class="skillbar"><i style="width:0%" data-target="88"></i></div></div></div>
+            <div class="skill"><div class="skill-head"><div>Educational Technology Integration</div><div class="skillnum" data-target="94">0%</div></div><div class="skillbar-wrap"><div class="skillbar"><i style="width:0%" data-target="94"></i></div></div></div>
+            <div class="skill"><div class="skill-head"><div>Communication & Team Leadership</div><div class="skillnum" data-target="90">0%</div></div><div class="skillbar-wrap"><div class="skillbar"><i style="width:0%" data-target="90"></i></div></div></div>
+            <div class="skill"><div class="skill-head"><div>Innovation & Design Thinking</div><div class="skillnum" data-target="96">0%</div></div><div class="skillbar-wrap"><div class="skillbar"><i style="width:0%" data-target="96"></i></div></div></div>
+          </div>
+        </div>
+      </main>
+
+      <aside class="right">
+        <div class="card">
+          <h3>Quick Facts</h3>
+          <div class="minor">Languages</div>
+          <p>Arabic (Native) • English (IELTS C1)</p>
+
+          <div style="margin-top:10px" class="minor">Digital Skills</div>
+          <div class="sidebar-skills">
+            <div class="pill">Data & Trackers — 92%</div>
+            <div class="pill">Instructional Design — 95%</div>
+            <div class="pill">EdTech Integration — 94%</div>
+            <div class="pill">Blended Tools — 93%</div>
+            <div class="pill">Project Mgmt — 88%</div>
+            <div class="pill">Coaching — 90%</div>
+            <div class="pill">Communication — 90%</div>
+            <div class="pill">Design Thinking — 96%</div>
+          </div>
+
+          <div style="margin-top:12px">
+            <h4 style="margin:0">Roles & Participation</h4>
+            <p class="minor" style="margin-top:6px">AP Coordinator (Ministry of Education) — Feb 2023 – Present</p>
+            <p class="minor">Teacher training programs — Sharjah Institute of Technology</p>
+          </div>
+
+          <div style="margin-top:12px">
+            <h4 style="margin:0">Soft Skills</h4>
+            <ul class="list" style="margin-left:14px">
+              <li>Creative lesson planning</li>
+              <li>Classroom management & behaviour strategies</li>
+              <li>Team leadership & collaboration</li>
+            </ul>
+          </div>
+
+          <div class="download">
+            <div class="dropdown" id="dd">
+              <button class="dropbtn" onclick="toggleDrop()">Download CV ▾</button>
+              <div class="dropmenu" id="dropmenu">
+                <a href="#" onclick="downloadHtml()">Download HTML</a>
+                <a href="Khaled_Yousef_CV.pdf" target="_blank">Download PDF (current)</a>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px" class="minor">Want changes? Reply and I’ll refine style, content, or produce a print-ready PDF.</div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="footer minor">Generated from your uploaded CV. LinkedIn integrated (opens in new tab).</div>
+  </div>
+</div>
+
+<script>
+// Particle background with color pulse
+const canvas = document.getElementById('particles');
+const ctx = canvas.getContext('2d');
+let W, H, particles = [];
+function resize(){ W = canvas.width = canvas.clientWidth; H = canvas.height = canvas.clientHeight; init(); }
+window.addEventListener('resize', resize, false);
+function rand(min,max){ return Math.random()*(max-min)+min; }
+function init(){
+  particles = []; let n = Math.floor((W*H)/90000)+16;
+  for(let i=0;i<n;i++){ particles.push({x:rand(0,W), y:rand(0,H), r:rand(0.9,2.6), vx:rand(-0.25,0.25), vy:rand(-0.12,0.12), char: ['π','∑','√','×','•'][Math.floor(rand(0,5))], phase:rand(0,Math.PI*2)}); }
+}
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  const t = Date.now()/1000;
+  for(let p of particles){
+    const glow = 0.45 + 0.55*Math.sin(t + p.phase);
+    const r = Math.floor(0 + glow*0);
+    const g = Math.floor(208 + glow*47);
+    const b = Math.floor(255 - glow*80);
+    ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${0.12+glow*0.12})`;
+    ctx.font = (p.r*6+6)+'px Inter';
+    ctx.fillText(p.char, p.x, p.y);
+    p.x += p.vx; p.y += p.vy;
+    if(p.x < -20) p.x = W+20; if(p.x > W+20) p.x = -20;
+    if(p.y < -20) p.y = H+20; if(p.y > H+20) p.y = -20;
+  }
+  requestAnimationFrame(draw);
+}
+resize(); draw();
+
+// Typing effect for tagline
+const tagline = " | AP Coordinator | Lean Six Sigma Practitioner | EdTech Innovator | Lifelong Learner";
+const typer = document.getElementById('typer');
+let idx = 0;
+function typeNext(){ if(idx <= tagline.length){ typer.textContent = tagline.slice(0, idx); idx++; setTimeout(typeNext, 36); } }
+setTimeout(typeNext, 700);
+
+// Intersection observer for reveal and animations
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('show');
+      // animate skillbars when visible
+      if(e.target.classList.contains('skill')){
+        const i = e.target.querySelector('i');
+        const num = e.target.querySelector('.skillnum');
+        const target = parseInt(i.getAttribute('data-target') || i.style.width.replace('%','') || 0, 10);
+        // bar fill (1s)
+        setTimeout(()=>{ i.style.width = target + '%'; }, 80);
+        // numeric count up with glow pulse
+        animateCount(num, target, 1000);
+      }
+      if(e.target.classList.contains('impact-card')){
+        // optional
+      }
+    }
+  });
+},{threshold:0.25});
+
+document.querySelectorAll('.timeline-item, .course, .impact-card, .skill').forEach(el=>obs.observe(el));
+
+// Show skills with slight delay (for entrance)
+document.querySelectorAll('.skill').forEach((s, i)=>setTimeout(()=>s.classList.add('show'), 420 + i*80));
+
+// Dropdown
+function toggleDrop(){ document.getElementById('dd').classList.toggle('show'); }
+
+// Download HTML
+function downloadHtml(){
+  const html = '<!doctype html>'+document.documentElement.outerHTML;
+  const blob = new Blob([html], {type:'text/html'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'Khaled_Rababah_Innovation_CV_v4.html'; document.body.appendChild(a); a.click(); a.remove();
+}
+
+// Course flip initial reveal
+setTimeout(()=>{
+  document.querySelectorAll('.course').forEach((c,i)=>{ setTimeout(()=>c.style.opacity=1, 120*i); });
+}, 400);
+
+// LinkedIn button pulse
+const ln = document.getElementById('linkedinBtn');
+ln.addEventListener('mouseover', ()=>{ ln.style.transform='translateY(-4px) scale(1.02)'; });
+ln.addEventListener('mouseout', ()=>{ ln.style.transform='none'; });
+
+// Animate counter function with glow pulse
+function animateCount(element, target, duration){
+  const start = performance.now();
+  const initial = 0;
+  function step(ts){
+    const progress = Math.min((ts - start)/duration, 1);
+    const value = Math.floor(initial + (target - initial) * progress);
+    element.textContent = value + '%';
+    // glow when progressing
+    element.classList.add('glow');
+    if(progress < 1) requestAnimationFrame(step);
+    else {
+      // end state: keep subtle glow then remove after short delay
+      setTimeout(()=> element.classList.remove('glow'), 900);
+    }
+  }
+  requestAnimationFrame(step);
+}
+
+</script>
+</body>
+</html>
